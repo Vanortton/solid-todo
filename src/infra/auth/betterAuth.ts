@@ -1,10 +1,10 @@
 import { betterAuth } from 'better-auth'
 import { prismaAdapter } from 'better-auth/adapters/prisma'
 import bcrypt from 'bcrypt'
-import { Prisma } from '../../generated/prisma'
+import { prisma } from '../db/prisma'
 
 export const auth = betterAuth({
-    database: prismaAdapter(Prisma, { provider: 'sqlite' }),
+    database: prismaAdapter(prisma, { provider: 'sqlite' }),
     emailAndPassword: {
         enabled: true,
         requireEmailVerification: false,
@@ -15,4 +15,7 @@ export const auth = betterAuth({
         },
     },
     basePath: '/auth',
+    advanced: {
+        disableOriginCheck: true,
+    },
 })
