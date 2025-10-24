@@ -1,4 +1,4 @@
-import type { AppError } from '../AppError.js'
+import type { AppError } from '../AppError'
 
 // Error
 export class Left<R> {

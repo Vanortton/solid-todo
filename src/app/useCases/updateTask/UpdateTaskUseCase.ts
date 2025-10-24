@@ -13,7 +13,7 @@ export class UpdateTaskUseCase {
         return right(void 0)
     }
 
-    async execute(dto: UpdateTaskDTO) {
+    async execute(dto: UpdateTaskDTO): Promise<Either<void>> {
         const validation = this.validateUserId(dto.userId)
         if (validation.isLeft()) return left(validation.error)
         if (!dto.task) return left(new MissingParamsError('task'))
